@@ -1,6 +1,7 @@
 import type { FC, ReactNode } from "react"
 import { siteMetadata } from "@/lib/config"
 import type { Metadata } from "next";
+import { ContextProviders } from "@/components/providers/ContextProviders"
 import "./globals.css";
 
 export const metadata: Metadata = siteMetadata 
@@ -13,7 +14,9 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <body className="antialiased">
-        {children}
+        <ContextProviders>
+          {children}
+        </ContextProviders>
       </body>
     </html>
   );
