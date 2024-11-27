@@ -14,11 +14,11 @@ interface RootLayoutProps {
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
-      <body className="antialiased">
-      <div className="flex p-4 items-center">
-        <LexifyLogo width={30} height={30} /> 
-      <h1 className="ml-2 text-xl">Lexify</h1>
-      </div>
+      <body id="app" className="antialiased">
+        <div className="flex p-4 items-center">
+          <LexifyLogo width={30} height={30} /> 
+        <h1 className="ml-2 text-xl">Lexify</h1>
+        </div>
         <ContextProviders>
           {children}
         </ContextProviders>
