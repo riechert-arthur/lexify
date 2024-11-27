@@ -3,6 +3,7 @@ import { siteMetadata } from "@/lib/config"
 import type { Metadata } from "next";
 import { ContextProviders } from "@/components/providers/ContextProviders"
 import "./globals.css";
+import LexifyLogo from "@/components/LexifyLogo"
 
 export const metadata: Metadata = siteMetadata 
 
@@ -14,6 +15,10 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <body className="antialiased">
+      <div className="flex p-4 items-center">
+        <LexifyLogo width={30} height={30} /> 
+      <h1 className="ml-2 text-xl">Lexify</h1>
+      </div>
         <ContextProviders>
           {children}
         </ContextProviders>

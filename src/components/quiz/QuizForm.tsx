@@ -7,7 +7,7 @@ import Radio from "@mui/material/Radio"
 
 export interface QuizFormProps {
   question: string
-  handleSubmit: (event: FormEvent) => void
+  handleSubmit: (event: FormEvent, value: string) => void
   options: string[]
 }
 
@@ -15,10 +15,10 @@ export const QuizForm: FC<QuizFormProps> = (props) => {
   return (
     <form>
       <FormControl variant="standard">
-        <FormLabel>{props.question}</FormLabel>
+        <FormLabel className="mb-4">{props.question}</FormLabel>
         <RadioGroup name="quiz" onChange={props.handleSubmit} className="grid grid-cols-2">
           {props.options.map((answerChoice: string, i: number) => (
-            <FormControlLabel key={i} value={i} control={<Radio/>} label={answerChoice} />
+            <FormControlLabel key={i} value={answerChoice} control={<Radio/>} label={answerChoice} />
           ))}
         </RadioGroup>
       </FormControl> 

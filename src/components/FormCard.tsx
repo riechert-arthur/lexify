@@ -1,11 +1,11 @@
 import Card from "@mui/material/Card"
 import type { FC, ReactNode } from "react"
 
-interface QuizFormCardProps {
+interface FormCardProps {
   children: Readonly<ReactNode>
 }
 
-export const QuizFormCard: FC<QuizFormCardProps> = ({ children }) => {
+export const FormCard: FC<FormCardProps> = ({ children }) => {
   return (
     <Card className="p-6" variant="outlined">
       {children}
