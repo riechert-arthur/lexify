@@ -26,10 +26,14 @@ const HomePage: FC<HomePageProps> = () => {
   const [answerIsCorrect, setAnswerIsCorrect] = useState(false) 
   const [isLoading, setIsLoading] = useState(true)
   const [currentNumberOfAnswers, setCurrentNumberOfAnswers] = useState(DEFAULT_NUMBER_OF_ANSWERS)
+  const [currentAnswerOptions, setCurrentAnswerOptions] = useState<string[]>([""])
 
   const generateQuizFromLexicalChunks = (lexicalChunkData: AllJapaneseChunksType, numberOfAnswers: number) => {
     const shuffledLexicalChunkData = shuffle(lexicalChunkData)
     const quizIndices = computeRandomQuestionAndAnswers(shuffledLexicalChunkData, numberOfAnswers)
+    const shuffledQuizIndices = { ...quizIndices, answerIndices: shuffle(quizIndices.answerIndices)}
+    const answerOptions = shuffledQuizIndices.answerIndices.map(i => shuffledLexicalChunkData[i].japanese_chunk)
+    setCurrentAnswerOptions(answerOptions)
     setLexicalChunkData(shuffledLexicalChunkData)
     setCurrentQuizIndices(quizIndices)
   }
@@ -112,7 +116,7 @@ const HomePage: FC<HomePageProps> = () => {
           <QuizForm
             question={lexicalChunkData[currentQuizIndices.questionIdx].english_translation}
             handleSubmit={handleQuizSubmit}
-            options={currentQuizIndices.answerIndices.map((i: number) => lexicalChunkData[i].japanese_chunk)}
+            options={currentAnswerOptions}
           />
         </FormCard>
       ) : (
